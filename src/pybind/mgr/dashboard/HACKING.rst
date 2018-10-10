@@ -270,6 +270,32 @@ Or, ``source`` the script and run the tests manually::
   $ run_teuthology_tests [tests]...
   $ cleanup_teuthology
 
+How to extract i18n messages from source code?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To extract the i18n messages from the templates and the typescript files just
+run the following command:
+
+  $ npm run i18n
+
+This will extract all marked messages from the html templates first and then
+add all marked strings from the typescript files to the translation template.
+As long as the extraction from typescript files is not supported from angular
+itself, we need to use the ngx-translator extractor to parse the typescript
+files.
+
+When the command ran successfully it should have created or updated the file
+``src/locale/messages.xlf``. Now, you can use this file to add a new
+translation to the project or update an existing languages.
+
+Usually you don't need to run this command manually, because our webhooks will
+recognize changes on the source code and update the source language file
+directly in our POEditor project. POEditor is the tool we use to make the
+translations public for our community. So, if you want to contribute
+translations, please visit:
+
+`Ceph dashboard on POEditor <https://poeditor.com/join/project/OoJ0QvkQfw>`_
+
 How to add a new controller?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
