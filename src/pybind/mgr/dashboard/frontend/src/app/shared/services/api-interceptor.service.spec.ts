@@ -36,11 +36,14 @@ describe('ApiInterceptorService', () => {
     expect(router.navigate).toHaveBeenCalledWith(...expectedCallParams);
   };
 
-  const runNotificationTest = (error, errorOpts, expectedCallParams) => {
+  const runNotificationTest = (error, errorOpts, expectedCallParams, isPermanent = false) => {
     httpError(error, errorOpts);
     httpTesting.verify();
+
     expect(notificationService.show).toHaveBeenCalled();
-    expect(notificationService.save).toHaveBeenCalledWith(expectedCallParams);
+    if (!isPermanent) {
+      expect(notificationService.save).toHaveBeenCalledWith(expectedCallParams);
+    }
   };
 
   const createCdNotification = (type, title?, message?, options?, application?, isPermanent?) => {
@@ -122,7 +125,8 @@ describe('ApiInterceptorService', () => {
           status: 504,
           statusText: 'AAA bbb CCC'
         },
-        createCdNotification(0, '504 - AAA bbb CCC', 'abc')
+        createCdNotification(0, '504 - AAA bbb CCC', 'abc', null, null, true),
+        true
       );
     });
 
