@@ -3,7 +3,7 @@ import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
 import { Icons } from '../../../shared/enum/icons.enum';
-import { CdNotification } from '../../../shared/models/cd-notification';
+import { CdNotificationConfig } from '../../../shared/models/cd-notification';
 import { AuthStorageService } from '../../../shared/services/auth-storage.service';
 import { NotificationService } from '../../../shared/services/notification.service';
 import { PrometheusAlertService } from '../../../shared/services/prometheus-alert.service';
@@ -15,7 +15,7 @@ import { PrometheusNotificationService } from '../../../shared/services/promethe
   styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent implements OnInit, OnDestroy {
-  notifications: CdNotification[];
+  notifications: CdNotificationConfig[];
   private interval: number;
   icons = Icons;
 
@@ -44,7 +44,7 @@ export class NotificationsComponent implements OnInit, OnDestroy {
         }, 5000);
       });
     }
-    this.notificationService.data$.subscribe((notifications: CdNotification[]) => {
+    this.notificationService.data$.subscribe((notifications: CdNotificationConfig[]) => {
       this.notifications = _.orderBy(notifications, ['timestamp'], ['desc']);
     });
   }
