@@ -28,6 +28,7 @@ import { SelectBadgesComponent } from './select-badges/select-badges.component';
 import { SelectComponent } from './select/select.component';
 import { SparklineComponent } from './sparkline/sparkline.component';
 import { SubmitButtonComponent } from './submit-button/submit-button.component';
+import { ToastComponent } from './toast/toast.component';
 import { UsageBarComponent } from './usage-bar/usage-bar.component';
 import { ViewCacheComponent } from './view-cache/view-cache.component';
 import { WarningPanelComponent } from './warning-panel/warning-panel.component';
@@ -67,7 +68,8 @@ import { WarningPanelComponent } from './warning-panel/warning-panel.component';
     SelectComponent,
     BackButtonComponent,
     RefreshSelectorComponent,
-    ConfigOptionComponent
+    ConfigOptionComponent,
+    ToastComponent
   ],
   providers: [],
   exports: [
@@ -87,8 +89,14 @@ import { WarningPanelComponent } from './warning-panel/warning-panel.component';
     GrafanaComponent,
     SelectComponent,
     RefreshSelectorComponent,
-    ConfigOptionComponent
+    ConfigOptionComponent,
+    ToastComponent
   ],
-  entryComponents: [ModalComponent, CriticalConfirmationModalComponent, ConfirmationModalComponent]
+  entryComponents: [
+    ModalComponent,
+    CriticalConfirmationModalComponent,
+    ConfirmationModalComponent,
+    ToastComponent
+  ]
 })
 export class ComponentsModule {}
